@@ -25,7 +25,7 @@ public class TurnTest extends CommandOpMode {
 
     @Override
     public void initialize() {
-        drive = new MecanumDriveSubsystem(new SampleMecanumDrive(hardwareMap), false);
+        drive = new MecanumDriveSubsystem(hardwareMap, telemetry, false);
         turnCommand = new TurnCommand(drive, Math.toRadians(ANGLE));
         schedule(turnCommand.whenFinished(() -> {
             Pose2d poseEstimate = drive.getPoseEstimate();

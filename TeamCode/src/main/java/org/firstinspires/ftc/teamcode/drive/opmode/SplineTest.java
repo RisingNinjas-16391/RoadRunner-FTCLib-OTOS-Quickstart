@@ -25,7 +25,7 @@ public class SplineTest extends CommandOpMode {
 
     @Override
     public void initialize() {
-        drive = new MecanumDriveSubsystem(new SampleMecanumDrive(hardwareMap), false);
+        drive = new MecanumDriveSubsystem(hardwareMap, telemetry, false);
         Trajectory traj = drive.trajectoryBuilder(new Pose2d())
                 .splineTo(new Vector2d(30, 30), 0)
                 .build();

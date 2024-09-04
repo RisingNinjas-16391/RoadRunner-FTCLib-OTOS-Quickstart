@@ -30,7 +30,7 @@ public class FieldCentricTest extends CommandOpMode {
     public void initialize() {
         gamepad = new GamepadEx(gamepad1);
 
-        drive = new MecanumDriveSubsystem(new SampleMecanumDrive(hardwareMap), true);
+        drive = new MecanumDriveSubsystem(hardwareMap, telemetry, true);
 
         register(drive);
         drive.setDefaultCommand(new MecanumDriveCommand(

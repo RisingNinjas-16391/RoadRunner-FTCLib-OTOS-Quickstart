@@ -98,7 +98,7 @@ public class DriveVelocityPIDTuner extends CommandOpMode {
 
         gamepad = new GamepadEx(gamepad1);
 
-        drive = new MecanumDriveSubsystem(new SampleMecanumDrive(hardwareMap), false);
+        drive = new MecanumDriveSubsystem(hardwareMap, telemetry, false);
         mode = Mode.TUNING_MODE;
 
         lastKp = MOTOR_VELO_PID.p;

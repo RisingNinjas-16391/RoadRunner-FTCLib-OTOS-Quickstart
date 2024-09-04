@@ -29,7 +29,7 @@ public class LocalizationTest extends CommandOpMode {
 
     @Override
     public void initialize() {
-        drive = new MecanumDriveSubsystem(new SampleMecanumDrive(hardwareMap), false);
+        drive = new MecanumDriveSubsystem(hardwareMap, telemetry, false);
 
         gamepad = new GamepadEx(gamepad1);
 

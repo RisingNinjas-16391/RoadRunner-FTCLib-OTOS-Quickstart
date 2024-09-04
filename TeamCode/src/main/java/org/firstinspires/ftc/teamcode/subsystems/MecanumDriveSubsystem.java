@@ -7,8 +7,10 @@ import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.acmerobotics.roadrunner.trajectory.TrajectoryBuilder;
 import com.arcrobotics.ftclib.command.SubsystemBase;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 
 import java.util.List;
@@ -23,8 +25,8 @@ public class MecanumDriveSubsystem extends SubsystemBase {
     private final SampleMecanumDrive drive;
     private final boolean fieldCentric;
 
-    public MecanumDriveSubsystem(SampleMecanumDrive drive, boolean isFieldCentric) {
-        this.drive = drive;
+    public MecanumDriveSubsystem(HardwareMap hardwareMap, Telemetry telemetry, boolean isFieldCentric) {
+        drive = new SampleMecanumDrive(hardwareMap, telemetry);
         fieldCentric = isFieldCentric;
     }
 

@@ -73,7 +73,7 @@ public class AutomaticFeedforwardTuner extends CommandOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        drive = new MecanumDriveSubsystem(new SampleMecanumDrive(hardwareMap), false);
+        drive = new MecanumDriveSubsystem(hardwareMap, telemetry, false);
         gamepad = new GamepadEx(gamepad1);
         state = State.STATIC;
 

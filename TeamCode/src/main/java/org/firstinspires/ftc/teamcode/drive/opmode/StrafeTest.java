@@ -26,7 +26,7 @@ public class StrafeTest extends CommandOpMode {
 
     @Override
     public void initialize() {
-        drive = new MecanumDriveSubsystem(new SampleMecanumDrive(hardwareMap), false);
+        drive = new MecanumDriveSubsystem(hardwareMap, telemetry, false);
         strafeFollower = new TrajectoryFollowerCommand(drive,
                 drive.trajectoryBuilder(new Pose2d())
                     .strafeRight(DISTANCE)
