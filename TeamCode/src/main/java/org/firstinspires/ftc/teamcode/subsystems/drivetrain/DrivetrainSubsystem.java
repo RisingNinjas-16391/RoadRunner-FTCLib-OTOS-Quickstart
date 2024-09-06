@@ -15,13 +15,11 @@ import org.firstinspires.ftc.teamcode.subsystems.drivetrain.drive.MecanumDrive;
 import org.firstinspires.ftc.teamcode.subsystems.drivetrain.drive.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.subsystems.drivetrain.drive.trajectorysequence.TrajectorySequenceBuilder;
 
-import org.firstinspires.ftc.teamcode.subsystems.drivetrain.drive.SampleMecanumDrive;
-
 import java.util.List;
 
 /**
- * A subsystem that uses the {@link SampleMecanumDrive} class.
- * This periodically calls {@link SampleMecanumDrive#update()} which runs the internal
+ * A subsystem that uses the {@link MecanumDrive} class.
+ * This periodically calls {@link MecanumDrive#update()} which runs the internal
  * state machine for the mecanum drive. All movement/following is async to fit the paradigm.
  */
 public class DrivetrainSubsystem extends SubsystemBase {
