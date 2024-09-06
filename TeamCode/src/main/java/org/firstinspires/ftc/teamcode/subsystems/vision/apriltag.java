@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.subsystems;
+package org.firstinspires.ftc.teamcode.subsystems.vision;
 
 
 import android.util.Size;
@@ -7,6 +7,7 @@ import com.arcrobotics.ftclib.command.SubsystemBase;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.BuiltinCameraDirection;
@@ -33,15 +34,10 @@ public class apriltag extends SubsystemBase {
      */
     private VisionPortal visionPortal;
 
-    public void startTags() {
 
-        initAprilTag();
+    public AprilTagSubsystem (HardwareMap hardwareMap){}
 
-        // Wait for the DS start button to be touched.
-        // Save more CPU resources when camera is no longer needed.
-        visionPortal.close();
 
-    }   // end method runOpMode()
 
     /**
      * Initialize the AprilTag processor.
@@ -49,6 +45,7 @@ public class apriltag extends SubsystemBase {
     private void initAprilTag() {
 
         // Create the AprilTag processor.
+        initAprilTag();
         aprilTag = new AprilTagProcessor.Builder()
 
                 // The following default settings are available to un-comment and edit as needed.
