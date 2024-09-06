@@ -1,10 +1,9 @@
 package org.firstinspires.ftc.teamcode.commands.drivetrain;
 
-import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.arcrobotics.ftclib.command.CommandBase;
 
-import org.firstinspires.ftc.teamcode.subsystems.drivetrain.DrivetrainSubsystem;
-import org.firstinspires.ftc.teamcode.subsystems.drivetrain.drive.trajectorysequence.TrajectorySequence;
+import org.firstinspires.ftc.teamcode.subsystem.drivetrain.DrivetrainSubsystem;
+import org.firstinspires.ftc.teamcode.subsystem.drivetrain.drive.trajectorysequence.TrajectorySequence;
 
 public class FollowTrajectorySequenceCommand extends CommandBase {
 

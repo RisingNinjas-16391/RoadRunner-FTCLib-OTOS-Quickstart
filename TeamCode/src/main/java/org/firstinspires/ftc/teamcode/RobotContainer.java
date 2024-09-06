@@ -7,10 +7,12 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.commands.auto.BlueAutoCommand;
-import org.firstinspires.ftc.teamcode.commands.auto.RedAutoCommand;
+import org.firstinspires.ftc.teamcode.commands.auto.BlueLeftCommand;
+import org.firstinspires.ftc.teamcode.commands.auto.BlueRightCommand;
+import org.firstinspires.ftc.teamcode.commands.auto.RedLeftCommand;
+import org.firstinspires.ftc.teamcode.commands.auto.RedRightCommand;
 import org.firstinspires.ftc.teamcode.commands.drivetrain.MecanumDriveCommand;
-import org.firstinspires.ftc.teamcode.subsystems.drivetrain.DrivetrainSubsystem;
+import org.firstinspires.ftc.teamcode.subsystem.drivetrain.DrivetrainSubsystem;
 
 
 public class RobotContainer {
@@ -18,6 +20,7 @@ public class RobotContainer {
     private final GamepadEx m_driverController;
     private final GamepadEx m_operatorController;
     private final GamepadButton m_resetHeading;
+
 
 
     public RobotContainer(HardwareMap hwMap, Gamepad gamepad1, Gamepad gamepad2, int autoNum){
@@ -33,6 +36,7 @@ public class RobotContainer {
         } else {
             setAutoCommands(autoNum);
         }
+
     }
 
     public void periodic(Telemetry telemetry) {
@@ -54,11 +58,18 @@ public class RobotContainer {
     private void setAutoCommands(int chooser) {
         switch (chooser) {
             case 1:
-                new BlueAutoCommand(m_driveSubsystem).schedule();
+                new BlueRightCommand(m_driveSubsystem).schedule();
                 break;
             case 2:
-                new RedAutoCommand(m_driveSubsystem).schedule();
+                new RedRightCommand(m_driveSubsystem).schedule();
                 break;
+            case 3:
+                new RedLeftCommand(m_driveSubsystem).schedule();
+                break;
+            case 4:
+                new BlueLeftCommand(m_driveSubsystem).schedule();
+                break;
+
         }
 
     }
