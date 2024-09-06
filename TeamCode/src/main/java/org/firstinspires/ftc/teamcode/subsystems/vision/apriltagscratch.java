@@ -23,8 +23,23 @@ import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
 import java.util.List;
 
 public class apriltagscratch extends SubsystemBase{
-
+    AprilTagProcessor tagProcessor = new AprilTagProcessor.Builder()
+            .setDrawAxes(true)
+            .setDrawCubeProjection(true)
+            .setDrawTagID(true)
+            .setTagLibrary(AprilTagGameDatabase.getCenterStageTagLibrary())
+            .setOutputUnits(DistanceUnit.INCH, AngleUnit.DEGREES)
+            .build();
     //Camera myCamera;
+    VisionPortal visionPortal = new VisionPortal.Builder()
+            .setCameraResolution(new Size(640,480))
+            .setAutoStopLiveView(true)
+            //.setCamera()
+            .setStreamFormat(VisionPortal.StreamFormat.MJPEG)
+
+            .addProcessor(tagProcessor)
+            .build();
+
 
     public apriltagscratch(HardwareMap hardwareMap) {
 
@@ -43,13 +58,15 @@ public class apriltagscratch extends SubsystemBase{
                 .setAutoStopLiveView(true)
                 //.setCamera()
                 .setStreamFormat(VisionPortal.StreamFormat.MJPEG)
-                
+
                 .addProcessor(tagProcessor)
                 .build();
 
-
-
-
+    }
+    public void updateTelemetry(Telemetry telemetry) {
+        telemetry.addLine("Intake");
+        //telemetry.addLine("NumTags",apriltagscratch.)
+        //telemetry.addData("Power", apriltagscratch.gettagnu());
     }
 
 
