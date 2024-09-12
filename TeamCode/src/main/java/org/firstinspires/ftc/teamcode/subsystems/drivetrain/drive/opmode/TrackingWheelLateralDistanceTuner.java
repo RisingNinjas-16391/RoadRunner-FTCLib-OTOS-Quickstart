@@ -84,7 +84,7 @@ public class TrackingWheelLateralDistanceTuner extends CommandOpMode {
 
     @Override
     public void initialize() {
-        drive = new DrivetrainSubsystem(hardwareMap, false);
+        drive = new DrivetrainSubsystem(hardwareMap, telemetry, false);
 
         if (!(drive.getLocalizer() instanceof StandardTrackingWheelLocalizer)) {
             RobotLog.setGlobalErrorMsg("StandardTrackingWheelLocalizer is not being set in the "

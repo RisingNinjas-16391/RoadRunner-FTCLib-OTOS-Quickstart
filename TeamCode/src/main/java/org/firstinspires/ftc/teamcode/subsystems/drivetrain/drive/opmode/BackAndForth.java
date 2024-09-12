@@ -40,7 +40,7 @@ public class BackAndForth extends CommandOpMode {
 
     @Override
     public void initialize() {
-        drive = new DrivetrainSubsystem(hardwareMap, false);
+        drive = new DrivetrainSubsystem(hardwareMap, telemetry, false);
         Trajectory forwardTrajectory = drive.trajectoryBuilder(new Pose2d())
                 .forward(DISTANCE)
                 .build();

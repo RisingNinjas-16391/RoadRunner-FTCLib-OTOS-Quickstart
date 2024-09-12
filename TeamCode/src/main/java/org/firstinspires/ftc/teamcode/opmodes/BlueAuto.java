@@ -10,22 +10,14 @@ import org.firstinspires.ftc.teamcode.RobotContainer;
 
 @Autonomous(name = "BlueAuto", group = "Autonomous")
 public class BlueAuto extends CommandOpMode {
-    private RobotContainer m_robotContainer;
     private Telemetry m_telemetry;
     @Override
     public void initialize() {
-        m_robotContainer = new RobotContainer(hardwareMap, gamepad1, gamepad2, 1); //Uses heavily modified untested hardware
-
         m_telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
+
+        new RobotContainer(hardwareMap, m_telemetry, gamepad1, gamepad2, 1); //Uses heavily modified untested hardware
 
         waitForStart();
 
     }
-    @Override
-    public void run() {
-        super.run();
-        m_robotContainer.periodic(m_telemetry);
-
-    }
-
 }

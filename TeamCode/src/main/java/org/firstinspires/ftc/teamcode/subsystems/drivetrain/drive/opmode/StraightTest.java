@@ -25,7 +25,7 @@ public class StraightTest extends CommandOpMode {
 
     @Override
     public void initialize() {
-        drive = new DrivetrainSubsystem(hardwareMap, false);
+        drive = new DrivetrainSubsystem(hardwareMap, telemetry, false);
         straightFollower = new FollowTrajectoryCommand(drive,
                 drive.trajectoryBuilder(new Pose2d())
                     .forward(DISTANCE)

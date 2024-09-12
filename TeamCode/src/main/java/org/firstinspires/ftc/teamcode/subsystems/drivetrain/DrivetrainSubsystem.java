@@ -12,6 +12,7 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.subsystems.drivetrain.drive.MecanumDrive;
+import org.firstinspires.ftc.teamcode.subsystems.drivetrain.drive.OTOSLocalizer;
 import org.firstinspires.ftc.teamcode.subsystems.drivetrain.drive.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.subsystems.drivetrain.drive.trajectorysequence.TrajectorySequenceBuilder;
 
@@ -23,17 +24,26 @@ import java.util.List;
  * state machine for the mecanum drive. All movement/following is async to fit the paradigm.
  */
 public class DrivetrainSubsystem extends SubsystemBase {
+    private final Telemetry telemetry;
+
+    private final Localizer localizer;
 
     private final MecanumDrive drive;
     private final boolean fieldCentric;
 
-    public DrivetrainSubsystem(HardwareMap hardwareMap, boolean isFieldCentric) {
-        drive = new MecanumDrive(hardwareMap);
+    public DrivetrainSubsystem(HardwareMap hardwareMap, Telemetry telemetry, boolean isFieldCentric) {
+        this.telemetry = telemetry;
+
+        localizer = new OTOSLocalizer(hardwareMap, telemetry);
+        drive = new MecanumDrive(hardwareMap, localizer);
         fieldCentric = isFieldCentric;
+
+
     }
 
-    public void updateTelemetry(Telemetry telemetry) {
-
+    @Override
+    public void periodic() {
+        telemetry.addLine("Drivetrain");
     }
 
     public void setMode(DcMotor.RunMode mode) {
