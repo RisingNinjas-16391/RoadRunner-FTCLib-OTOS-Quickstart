@@ -55,7 +55,7 @@ public class OTOSLimelightLocalizer implements Localizer {
         m_otos.setLinearUnit(DistanceUnit.INCH);
         m_otos.setAngularUnit(AngleUnit.RADIANS);
 
-        SparkFunOTOS.Pose2D offset = new SparkFunOTOS.Pose2D(0, 0, 0);
+        SparkFunOTOS.Pose2D offset = new SparkFunOTOS.Pose2D(m_otosOffset.getX(), m_otosOffset.getY(), m_otosOffset.getRotation().getDegrees());
         m_otos.setOffset(offset);
 
         m_otos.setLinearScalar(1.0);
@@ -77,7 +77,6 @@ public class OTOSLimelightLocalizer implements Localizer {
         m_telemetry.addLine();
         m_telemetry.addLine(String.format("OTOS Hardware Version: v%d.%d", hwVersion.major, hwVersion.minor));
         m_telemetry.addLine(String.format("OTOS Firmware Version: v%d.%d", fwVersion.major, fwVersion.minor));
-
 
     }
 
@@ -175,7 +174,7 @@ public class OTOSLimelightLocalizer implements Localizer {
     @NonNull
     @Override
     public com.acmerobotics.roadrunner.geometry.Pose2d getPoseEstimate() {
-        return null;
+        return new com.acmerobotics.roadrunner.geometry.Pose2d(m_pose.getX(), m_pose.getY(), m_pose.getRotation().getRadians());
     }
 
     @Nullable
@@ -186,6 +185,6 @@ public class OTOSLimelightLocalizer implements Localizer {
 
     @Override
     public void setPoseEstimate(@NonNull com.acmerobotics.roadrunner.geometry.Pose2d pose2d) {
-
+        m_pose = new Pose2d(pose2d.getX(), pose2d.getY(), new Rotation2d(pose2d.getHeading()));
     }
 }
