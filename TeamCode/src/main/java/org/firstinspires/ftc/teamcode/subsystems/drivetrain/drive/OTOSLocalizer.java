@@ -18,7 +18,7 @@ public class OTOSLocalizer implements Localizer {
     com.arcrobotics.ftclib.geometry.Pose2d pose = new com.arcrobotics.ftclib.geometry.Pose2d();
     Pose2d poseVel = new Pose2d();
 
-    com.arcrobotics.ftclib.geometry.Pose2d offset = new com.arcrobotics.ftclib.geometry.Pose2d(0, 0, Rotation2d.fromDegrees(90));
+    com.arcrobotics.ftclib.geometry.Pose2d offset = new com.arcrobotics.ftclib.geometry.Pose2d(0, -3.5, Rotation2d.fromDegrees(90));
 
     public OTOSLocalizer(HardwareMap hardwareMap) {
         myOtos = hardwareMap.get(SparkFunOTOS.class, "sensor_otos");
