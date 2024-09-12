@@ -37,8 +37,6 @@ public class DrivetrainSubsystem extends SubsystemBase {
         localizer = new OTOSLocalizer(hardwareMap, telemetry);
         drive = new MecanumDrive(hardwareMap, localizer);
         fieldCentric = isFieldCentric;
-
-
     }
 
     @Override
