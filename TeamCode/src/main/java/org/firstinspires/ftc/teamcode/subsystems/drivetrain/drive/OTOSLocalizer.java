@@ -26,23 +26,7 @@ public class OTOSLocalizer implements Localizer {
 
         myOtos = hardwareMap.get(SparkFunOTOS.class, "sensor_otos");
 
-        myOtos.setAngularUnit(AngleUnit.RADIANS);
-        myOtos.setLinearUnit(DistanceUnit.INCH);
-
-        myOtos.setLinearScalar(1.0);
-        myOtos.setAngularScalar(1.0);
-
-        myOtos.calibrateImu();
-
-        myOtos.resetTracking();
-
-        SparkFunOTOS.Pose2D currentPosition = new SparkFunOTOS.Pose2D(0, 0, 0);
-        myOtos.setPosition(currentPosition);
-
-        // Get the hardware and firmware version
-        SparkFunOTOS.Version hwVersion = new SparkFunOTOS.Version();
-        SparkFunOTOS.Version fwVersion = new SparkFunOTOS.Version();
-        myOtos.getVersionInfo(hwVersion, fwVersion);
+        configureOtos();
     }
 
     private void configureOtos() {
