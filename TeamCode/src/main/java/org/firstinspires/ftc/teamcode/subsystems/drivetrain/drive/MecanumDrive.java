@@ -20,6 +20,7 @@ import com.acmerobotics.roadrunner.drive.DriveSignal;
 import com.acmerobotics.roadrunner.followers.HolonomicPIDVAFollower;
 import com.acmerobotics.roadrunner.followers.TrajectoryFollower;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
+import com.acmerobotics.roadrunner.localization.Localizer;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.acmerobotics.roadrunner.trajectory.TrajectoryBuilder;
 import com.acmerobotics.roadrunner.trajectory.constraints.AngularVelocityConstraint;
@@ -75,7 +76,7 @@ public class MecanumDrive extends com.acmerobotics.roadrunner.drive.MecanumDrive
     private final List<Integer> lastEncPositions = new ArrayList<>();
     private final List<Integer> lastEncVels = new ArrayList<>();
 
-    public MecanumDrive(@NonNull HardwareMap hardwareMap) {
+    public MecanumDrive(@NonNull HardwareMap hardwareMap, Localizer localizer) {
         super(kV, kA, kStatic, TRACK_WIDTH, TRACK_WIDTH, LATERAL_MULTIPLIER);
 
         TrajectoryFollower follower = new HolonomicPIDVAFollower(TRANSLATIONAL_PID, TRANSLATIONAL_PID, HEADING_PID,
@@ -123,7 +124,7 @@ public class MecanumDrive extends com.acmerobotics.roadrunner.drive.MecanumDrive
 
         setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        setLocalizer(new OTOSLocalizer(hardwareMap));
+        setLocalizer(localizer);
     }
 
     public TrajectoryBuilder trajectoryBuilder(Pose2d startPose) {

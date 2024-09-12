@@ -39,7 +39,7 @@ public class MaxVelocityTuner extends CommandOpMode {
 
     @Override
     public void initialize() {
-        drive = new DrivetrainSubsystem(hardwareMap, false);
+        drive = new DrivetrainSubsystem(hardwareMap, telemetry, false);
         batteryVoltageSensor = hardwareMap.voltageSensor.iterator().next();
 
         telemetry.addLine("Your bot will go at full speed for " + RUNTIME + " seconds.");

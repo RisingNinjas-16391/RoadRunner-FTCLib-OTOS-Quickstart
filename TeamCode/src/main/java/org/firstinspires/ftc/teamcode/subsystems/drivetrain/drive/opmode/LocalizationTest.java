@@ -27,7 +27,7 @@ public class LocalizationTest extends CommandOpMode {
 
     @Override
     public void initialize() {
-        drive = new DrivetrainSubsystem(hardwareMap, false);
+        drive = new DrivetrainSubsystem(hardwareMap, telemetry, false);
 
         gamepad = new GamepadEx(gamepad1);
 

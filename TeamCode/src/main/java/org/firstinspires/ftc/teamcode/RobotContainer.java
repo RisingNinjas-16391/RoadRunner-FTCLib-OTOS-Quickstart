@@ -14,14 +14,19 @@ import org.firstinspires.ftc.teamcode.subsystems.drivetrain.DrivetrainSubsystem;
 
 
 public class RobotContainer {
+    private final Telemetry telemetry;
+
     private final DrivetrainSubsystem m_driveSubsystem;
     private final GamepadEx m_driverController;
     private final GamepadEx m_operatorController;
     private final GamepadButton m_resetHeading;
 
 
-    public RobotContainer(HardwareMap hwMap, Gamepad gamepad1, Gamepad gamepad2, int autoNum){
-        m_driveSubsystem = new DrivetrainSubsystem(hwMap, true);
+
+    public RobotContainer(HardwareMap hwMap, Telemetry telemetry, Gamepad gamepad1, Gamepad gamepad2, int autoNum){
+        this.telemetry = telemetry;
+
+        m_driveSubsystem = new DrivetrainSubsystem(hwMap, telemetry, true);
         m_driverController = new GamepadEx(gamepad1);
         m_operatorController = new GamepadEx(gamepad2);
 
@@ -35,9 +40,7 @@ public class RobotContainer {
         }
     }
 
-    public void periodic(Telemetry telemetry) {
-        m_driveSubsystem.updateTelemetry(telemetry);
-
+    public void periodic() {
         telemetry.update();
     }
 

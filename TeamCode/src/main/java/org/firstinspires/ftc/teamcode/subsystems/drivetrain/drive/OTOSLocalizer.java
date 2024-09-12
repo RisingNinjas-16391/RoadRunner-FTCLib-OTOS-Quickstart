@@ -14,20 +14,33 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 public class OTOSLocalizer implements Localizer {
+    Telemetry telemetry;
     SparkFunOTOS myOtos;
     com.arcrobotics.ftclib.geometry.Pose2d pose = new com.arcrobotics.ftclib.geometry.Pose2d();
     Pose2d poseVel = new Pose2d();
 
     com.arcrobotics.ftclib.geometry.Pose2d offset = new com.arcrobotics.ftclib.geometry.Pose2d(0, -3.5, Rotation2d.fromDegrees(90));
 
-    public OTOSLocalizer(HardwareMap hardwareMap) {
+    public OTOSLocalizer(HardwareMap hardwareMap, Telemetry telemetry) {
+        this.telemetry = telemetry;
+
         myOtos = hardwareMap.get(SparkFunOTOS.class, "sensor_otos");
 
-        myOtos.setAngularUnit(AngleUnit.RADIANS);
+        configureOtos();
+    }
+
+    private void configureOtos() {
+        telemetry.addLine("Configuring OTOS...");
+
         myOtos.setLinearUnit(DistanceUnit.INCH);
+        myOtos.setAngularUnit(AngleUnit.RADIANS);
+
+        SparkFunOTOS.Pose2D offset = new SparkFunOTOS.Pose2D(0, 0, 0);
+        myOtos.setOffset(offset);
 
         myOtos.setLinearScalar(1.0);
         myOtos.setAngularScalar(1.0);
+
 
         myOtos.calibrateImu();
 
@@ -36,10 +49,14 @@ public class OTOSLocalizer implements Localizer {
         SparkFunOTOS.Pose2D currentPosition = new SparkFunOTOS.Pose2D(0, 0, 0);
         myOtos.setPosition(currentPosition);
 
-        // Get the hardware and firmware version
         SparkFunOTOS.Version hwVersion = new SparkFunOTOS.Version();
         SparkFunOTOS.Version fwVersion = new SparkFunOTOS.Version();
         myOtos.getVersionInfo(hwVersion, fwVersion);
+
+        telemetry.addLine("OTOS configured! Press start to get position data!");
+        telemetry.addLine();
+        telemetry.addLine(String.format("OTOS Hardware Version: v%d.%d", hwVersion.major, hwVersion.minor));
+        telemetry.addLine(String.format("OTOS Firmware Version: v%d.%d", fwVersion.major, fwVersion.minor));
     }
 
     @NonNull

@@ -42,7 +42,7 @@ public class FollowerPIDTuner extends CommandOpMode {
 
     @Override
     public void initialize() {
-        drive = new DrivetrainSubsystem(hardwareMap, false);
+        drive = new DrivetrainSubsystem(hardwareMap, telemetry, false);
 
         startPose = new Pose2d(-DISTANCE / 2, -DISTANCE / 2, 0);
 

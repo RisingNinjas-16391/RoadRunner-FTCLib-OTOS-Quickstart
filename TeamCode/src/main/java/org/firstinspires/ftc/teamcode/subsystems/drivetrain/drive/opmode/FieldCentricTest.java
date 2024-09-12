@@ -29,7 +29,7 @@ public class FieldCentricTest extends CommandOpMode {
     public void initialize() {
         gamepad = new GamepadEx(gamepad1);
 
-        drive = new DrivetrainSubsystem(hardwareMap, true);
+        drive = new DrivetrainSubsystem(hardwareMap, telemetry, true);
 
         register(drive);
         drive.setDefaultCommand(new MecanumDriveCommand(

@@ -88,7 +88,7 @@ public class ManualFeedforwardTuner extends CommandOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, dashboard.getTelemetry());
 
-        drive = new DrivetrainSubsystem(hardwareMap, false);
+        drive = new DrivetrainSubsystem(hardwareMap, telemetry, false);
         gamepad = new GamepadEx(gamepad1);
         mode = Mode.TUNING_MODE;
 
